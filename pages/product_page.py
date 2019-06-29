@@ -1,12 +1,13 @@
 from .base_page import BasePage
 from .locators import ProductPageLocators
-import time
+
 
 class ProductPage(BasePage):
-    def add_item_to_basket(self):
+    def click_add_button(self):
         add_button = self.browser.find_element(*ProductPageLocators.ADD_TO_BASKET_BUTTON)
         add_button.click()
 
+    def add_item_to_basket(self):
         BasePage.solve_quiz_and_get_code(self)
 
         success_message = self.browser.find_element(*ProductPageLocators.SUCCESS_MESSAGE_STRONG)
@@ -25,3 +26,15 @@ class ProductPage(BasePage):
         product_price_text = product_price.text
 
         assert product_price_text == price_field_text
+
+    def guest_cant_see_success_message_after_adding_product_to_cart(self):
+        assert not self.is_element_present(*ProductPageLocators.SUCCESS_MESSAGE_STRONG), \
+            " First: Success message is presented"
+
+    def guest_cant_see_success_message(self):
+        assert not self.is_element_present(*ProductPageLocators.SUCCESS_MESSAGE_STRONG), \
+            "Second:Success message is presented"
+
+    def message_dissapeared_after_adding_product_to_cart(self):
+        assert BasePage.is_disappeared(self, *ProductPageLocators.SUCCESS_MESSAGE_STRONG) == True, \
+             "Third: Success message is present"
