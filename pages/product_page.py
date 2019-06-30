@@ -1,6 +1,6 @@
 from .base_page import BasePage
 from .locators import ProductPageLocators
-
+from .locators import BasePageLocators
 
 class ProductPage(BasePage):
     def click_add_button(self):
@@ -38,3 +38,8 @@ class ProductPage(BasePage):
     def message_dissapeared_after_adding_product_to_cart(self):
         assert BasePage.is_disappeared(self, *ProductPageLocators.SUCCESS_MESSAGE_STRONG) == True, \
              "Third: Success message is present"
+
+    def guest_can_go_to_login_page_from_product_page(self):
+        login_button = self.browser.find_element(*BasePageLocators.LOGIN_LINK)
+        login_button.click()
+
