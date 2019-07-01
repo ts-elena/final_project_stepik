@@ -6,6 +6,7 @@ import pytest
 @pytest.mark.login_guest
 class TestLoginFromMainPage(object):
     def test_guest_can_go_to_login_link(self, browser):
+        browser.implicitly_wait()
         link = "http://selenium1py.pythonanywhere.com/en-gb/"
         page = MainPage(browser, link)
         page.open()

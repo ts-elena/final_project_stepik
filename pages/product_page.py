@@ -22,7 +22,6 @@ class ProductPage(BasePage):
         price_field_text = price_field.text
 
         product_price = self.browser.find_element(*ProductPageLocators.PRODUCT_PRICE)
-        print(product_price)
         product_price_text = product_price.text
 
         assert product_price_text == price_field_text
