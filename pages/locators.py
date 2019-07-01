@@ -2,7 +2,8 @@ from selenium.webdriver.common.by import By
 
 
 class MainPageLocators(object):
-    pass
+    CART = (By.XPATH, "//a[text()='View basket']")
+    EMPTY_CART_MESSAGE = (By.CSS_SELECTOR, "#content_inner p")
 
 class LoginPageLocators(object):
     LOG_IN_FORM = (By.CSS_SELECTOR, "#login_form")
