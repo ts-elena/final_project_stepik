@@ -13,7 +13,7 @@ decorator==4.4.0
 defusedxml==0.6.0
 entrypoints==0.3
 Flask==1.0.2
-Flask-Cors==3.0.4
+Flask-Cors==3.0.9
 Flask-JWT-Extended==3.18.2
 flask-restplus==0.12.1
 Flask-Script==2.0.6
